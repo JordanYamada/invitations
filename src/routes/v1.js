@@ -23,11 +23,13 @@ router.delete('/:model/:id', handleDelete);
 
 async function handleGetAll(req, res) {
   let allRecords = await req.model.get();
+  console.log('hi')
   res.status(200).json(allRecords);
 }
 
 async function handleGetOne(req, res) {
   const id = req.params.id;
+  console.log(id)
   let theRecord = await req.model.get(id)
   res.status(200).json(theRecord);
 }
@@ -53,6 +55,3 @@ async function handleDelete(req, res) {
 
 
 module.exports = router;
-
-
-
