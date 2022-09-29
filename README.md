@@ -1,1 +1,1 @@
-# invitations
+# auth-api
