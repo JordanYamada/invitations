@@ -2,6 +2,7 @@
 
 const express = require('express');
 const dataModules = require('../models');
+const acl = require('./../middleware/acl.js');
 
 const router = express.Router();
 
@@ -15,11 +16,11 @@ router.param('model', (req, res, next) => {
   }
 });
 
-router.get('/:model', handleGetAll);
-router.get('/:model/:id', handleGetOne);
-router.post('/:model', handleCreate);
-router.put('/:model/:id', handleUpdate);
-router.delete('/:model/:id', handleDelete);
+router.get('/:model', acl('read'), handleGetAll);
+router.get('/:model/:id', acl('read'), handleGetOne);
+router.post('/:model', acl('create'), handleCreate);
+router.put('/:model/:id', acl('update'), handleUpdate);
+router.delete('/:model/:id', acl('delete'), handleDelete);
 
 async function handleGetAll(req, res) {
   let allRecords = await req.model.get();
@@ -53,6 +54,3 @@ async function handleDelete(req, res) {
 
 
 module.exports = router;
-
-
-
