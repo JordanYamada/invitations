@@ -36,5 +36,5 @@ You can interact with this project using these routes in thunder client:
 
 Compose a UML or Process/Data Flow Diagram for every application
 UML Reference
-![Wireframe](./images/Lab09-UML.png)
+![Wireframe](./images/Lab09-UML.jpeg)
 
